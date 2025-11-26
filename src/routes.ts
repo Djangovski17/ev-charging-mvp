@@ -1,15 +1,15 @@
 import { Express } from 'express';
-import healthRoutes from './healthRoutes';
-import startRoutes from './startRoutes';
-import paymentRoutes from './paymentRoutes';
-import adminRoutes from './adminRoutes';
+import healthRoutes from './routes/healthRoutes';
+import startRoutes from './routes/startRoutes';
+import paymentRoutes from './routes/paymentRoutes';
+import adminRoutes from './routes/adminRoutes';
 
 export const registerRoutes = (app: Express): void => {
   // Rejestracja routingu - kolejność ma znaczenie!
   // Najpierw specyficzne ścieżki, potem ogólne
   app.use('/health', healthRoutes);
   app.use('/admin', adminRoutes);
-  app.use('/', startRoutes); // /stop/:stationId będzie tutaj
+  app.use('/', startRoutes); // /start/:cpId będzie tutaj
   app.use('/', paymentRoutes);
   
   // Handler 404 dla niezarejestrowanych route'ów
